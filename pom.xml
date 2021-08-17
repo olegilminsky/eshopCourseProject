@@ -10,6 +10,7 @@
         <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.olegilminsky</groupId>
     <artifactId>eshopCourseProject</artifactId>
     <version>1.0-SNAPSHOT</version>
