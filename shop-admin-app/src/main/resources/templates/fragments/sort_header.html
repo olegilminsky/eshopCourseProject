@@ -1,0 +1,31 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th scope="col" th:fragment="sort_header_product (header, column)">[[${header}]]
+    <a th:href="@{/product(page=${param.page}, size=${param.size}, productTitleFilter=${param.productTitleFilter},
+                           minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortDirection=${param.sortDirection}, sortField=${column})}">
+        <i class="fa"
+           th:classappend="${#strings.equals(#request.getParameter('sortDirection'), 'asc')} ? 'fa-sort-down' : 'fa-sort-up'">
+        </i>
+    </a>
+</th>
+
+<th scope="col" th:fragment="sort_header_user (header, column)">[[${header}]]
+    <a th:href="@{/user(page=${param.page}, size=${param.size}, usernameFilter=${param.usernameFilter},
+                           minAge=${param.minAge}, maxAge=${param.maxAge}, sortDirection=${param.sortDirection}, sortField=${column})}">
+        <i class="fa"
+           th:classappend="${#strings.equals(#request.getParameter('sortDirection'), 'asc')} ? 'fa-sort-down' : 'fa-sort-up'">
+        </i>
+    </a>
+</th>
+
+<th scope="col" th:fragment="sort_header_category (header, column)">[[${header}]]
+    <a th:href="@{/category(page=${param.page}, size=${param.size}, categoryFilter=${param.categoryFilter},
+                           sortDirection=${param.sortDirection}, sortField=${column})}">
+        <i class="fa"
+           th:classappend="${#strings.equals(#request.getParameter('sortDirection'), 'asc')} ? 'fa-sort-down' : 'fa-sort-up'">
+        </i>
+    </a>
+</th>
+
+</html>

@@ -1,0 +1,34 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="paginator(data, linkFragment)" class="col-12" th:if="${data.hasContent()}">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li th:classappend="${!data.hasPrevious()} ? 'disabled'"
+                class="page-item">
+                <a class="page-link"
+                   th:href="@{/data(page=${data.number}, size=${data.size}, usernameFilter=${param.usernameFilter},
+                           minAge=${param.minAge}, maxAge=${param.maxAge}, sortDirection=${param.sortDirection}, sortField=${param.sortField})}">Previous</a>
+            </li>
+
+            <li th:each="num : ${#numbers.sequence(1, users.totalPages)}"
+                th:classappend="${num == users.number + 1} ? 'active'"
+                class="page-item">
+                <a class="page-link"
+                   th:text="${num}"
+                   th:href="@{/user(page=${num}, size=${users.size}, usernameFilter=${param.usernameFilter},
+                           minAge=${param.minAge}, maxAge=${param.maxAge}, sortDirection=${param.sortDirection}, sortField=${param.sortField})}">1</a>
+            </li>
+
+            <li th:classappend="${!users.hasNext()} ? 'disabled'"
+                class="page-item">
+                <a class="page-link"
+                   th:href="@{/user(page=${users.number + 2}, size=${users.size}, usernameFilter=${param.usernameFilter},
+                           minAge=${param.minAge}, maxAge=${param.maxAge}, sortDirection=${param.sortDirection}, sortField=${param.sortField})}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</html>
